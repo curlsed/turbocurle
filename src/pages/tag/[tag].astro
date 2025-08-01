@@ -1,0 +1,62 @@
+---
+import {getTags} from "@/utils/tags";
+import {type CollectionEntry, getCollection} from "astro:content";
+import { mappedSort, sortPostsByDate} from "../../utils/data.util";
+import {SiteConfig} from "../../consts";
+import Base from "../../layouts/Base.astro";
+
+
+export async function getStaticPaths(): Promise<any> {
+
+    const tags = await getTags();
+
+    const posts = (await getCollection('blog')).sort(
+        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+    );
+
+    return tags.map((tag) => {
+        const filteredPosts = posts.filter((post) =>
+            post.data.tags.includes(tag.name)
+        );
+
+        // Sort posts by pinned status and date
+        filteredPosts.sort(mappedSort(sortPostsByDate, (i) => {
+            return { pubDate: i.data.pubDate };
+        }));
+
+        return {
+            params: { tag: tag.name },
+            props: {
+                posts: filteredPosts
+            }
+        };
+    });
+}
+
+interface Props {
+    posts: CollectionEntry<'blog'>[];
+}
+
+const { tag } = Astro.params;
+const title = SiteConfig.title;
+const description = SiteConfig.description;
+
+const { posts } = Astro.props;
+---
+
+<Base title={title} description="" >
+    <article class="row-fluid navmargin">
+        <header class="page-header">
+            <h1>{tag}</h1>
+        </header>
+        <!-- "{{.Content}}" pulls from the markdown content of the corresponding _index.md -->
+    </article>
+    <ul>
+        <!-- Ranges through content/posts/*.md -->
+        { posts.map((post) => (
+            <li>
+                <a href={`/blog/${post.id}/`}>{post.data.pubDate.toLocaleDateString()} | {post.data.title}</a>
+            </li>
+        ))}
+    </ul>
+</Base>

@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import Head from '../components/Head.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+
+type Props = {
+    title: string;
+    description: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<Head title={title} description={description} />
+<body>
+<Header />
+<div id="content" class="container navmargin">
+    <slot/>
+</div>
+<Footer />
+</body>
+
+<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="/css/bootstrap-responsive.css" >
+<link rel="stylesheet" href="/css/style.css">
+<script is:inline src="/js/jquery.js" />
+<script is:inline src="/js/bootstrap-386.js" />
+<script is:inline src="/js/bootstrap-transition.js" />
+<script is:inline src="/js/bootstrap-alert.js" />
+<script is:inline src="/js/bootstrap-modal.js"/>
+<script is:inline src="/js/bootstrap-dropdown.js"/>
+<script is:inline src="/js/bootstrap-scrollspy.js"/>
+<script is:inline src="/js/bootstrap-tab.js"/>
+<script is:inline src="/js/bootstrap-tooltip.js"/>
+<script is:inline src="/js/bootstrap-popover.js"/>
+<script is:inline src="/js/bootstrap-button.js"/>
+<script is:inline src="/js/bootstrap-collapse.js"/>
+<script is:inline src="/js/bootstrap-carousel.js"/>
+<script is:inline src="/js/bootstrap-typeahead.js"/>
+<script is:inline src="/js/bootstrap-affix.js"/>
+
+<script is:inline>
+    _386 = {
+        fastLoad: false ,
+        onePass: false ,
+        speedFactor: 1
+    };
+
+
+    function ThisYear() {
+        document.getElementById('thisyear').innerHTML = new Date().getFullYear();
+    };
+</script>
+
+</html>

@@ -1,0 +1,20 @@
+---
+
+import Base from "./Base.astro";
+import type {CollectionEntry} from "astro:content";
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const post = Astro.props;
+---
+
+<Base {...post}>
+    <div class="row-fluid navmargin">
+        <div class="page-header">
+            <h1>{post.title} - { post.pubDate.toISOString() }</h1>
+        </div>
+        <p class="lead">{post.description}</p>
+        <slot/>
+        <h4><a href="/">Back to home</a></h4>
+    </div>
+</Base>
