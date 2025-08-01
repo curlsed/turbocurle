@@ -28,9 +28,6 @@ export default function goatDiagrams () {
             index: number;
         }[] = [];
 
-        // console.log("goatDiagrams");
-        // console.log(tree);
-
         visit(tree, 'code', function (node: Code, index?: number, parent?: any) {
             if( node.lang !== 'goat') {
                 return;
@@ -42,16 +39,11 @@ export default function goatDiagrams () {
             });
         })
 
-        // console.log("Found " + queue.length + " goat diagrams to convert to SVG");
-
         for (const node of queue) {
             const svgString =
                     await ConvertGoatToSVG(node.node.value).catch((error) => {
                        console.error(`Error converting goat diagram to SVG: ${error}`);
                     })
-            // console.log(node);
-            // console.log(`Converted goat diagram to SVG for node at index ${node.index}`);
-            // console.log(svgString);
 
             const base64Image = btoa(svgString!);
             const imgSrc = `data:image/svg+xml;base64,${base64Image}`;
@@ -64,8 +56,6 @@ export default function goatDiagrams () {
 
             // Replace the original code block with the HTML node
             node.parent.children.splice(node.index, 1, htmlNode);
-
-            // console.log(`Replaced code block with SVG for goat diagram at index ${node.index}`);
         }
     }
 }
