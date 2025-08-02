@@ -93,12 +93,23 @@ nav {
   background: #bbbbbb;
 }
 
+.goat-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 
+  svg {
+    color: white;
 
-svg text {
-  font-family: DOS, Monaco, Menlo, Consolas, "Courier New", monospace;
-  font-size: 18px;
-  fill: #000000;
+    text {
+      font-family: DOS, Monaco, Menlo, Consolas, "Courier New", monospace;
+      font-size: 18px;
+      fill: #FFFFFF;
+    }
+  }
 }
 
 
