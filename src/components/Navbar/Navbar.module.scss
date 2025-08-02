@@ -44,11 +44,15 @@
     padding-inline: 12px;
     color: #000000;
     text-decoration: none;
-  }
 
-  a:hover {
-    color: #bbbbbb;
-    background-color: #000000;
+    &:hover {
+      color: #bbbbbb;
+      background-color: #000000;
+    }
+
+    &.nav-link:first-letter{
+      color: red;
+    }
   }
 
 }
