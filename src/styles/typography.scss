@@ -1,0 +1,87 @@
+@font-face {
+  font-family: 'DOS';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/css/fonts/Fixedsys500c.eot');
+  src: local('☺'), url('/css/fonts/Fixedsys500c.woff') format('woff'),
+  url('/css/fonts/Fixedsys500c.ttf') format('truetype'),
+  url('/css/fonts/Fixedsys500c.svg') format('svg');
+}
+
+@mixin set-fonts($font-family, $font-weight: normal, $font-style: normal) {
+  font-family: DOS, Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-weight: $font-weight;
+  font-style: $font-style;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 20px;
+  color: #ffffff;
+  text-rendering: optimizelegibility;
+}
+
+
+h1 {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+
+.lead {
+  padding: 9px 14px 9px 14px;
+  margin: 9px 4px 9px 4px;
+  font-size: 18px;
+  color: #ffffff;
+  border: 2px solid #bbbbbb;
+}
+
+// Inline and block code elements
+code {
+  @include set-fonts('DOS');
+  padding: 0;
+  white-space: pre-wrap;
+  color: #FFFFFF;
+  background-color: #000000;
+}
+
+// Block code elements
+pre code {
+  counter-reset: step;
+  counter-increment: step 0;
+
+  background-color: unset;
+
+  .line::before {
+    content: counter(step);
+    counter-increment: step;
+    width: 1rem;
+    margin-right: 1.5rem;
+    display: inline-block;
+    text-align: right;
+    color: rgba(115,138,148,.4)
+  }
+}
+
+/*
+pre,
+code{
+  padding: 0;
+  @include set-fonts('DOS');
+  color: #555555;
+}
+
+code {
+
+
+
+}
+*/

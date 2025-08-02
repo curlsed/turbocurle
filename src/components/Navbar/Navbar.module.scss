@@ -1,0 +1,55 @@
+@use "../../styles/colors" as *;
+
+
+.navbar {
+  margin-bottom: 20px;
+  max-height: 20px;
+
+  overflow: visible;
+  background: #bbbbbb;
+
+  &-fixed-top,
+  &-fixed-bottom {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    margin-bottom: 0;
+  }
+
+  &-fixed-top {
+    top: 0;
+  }
+
+  &_collapse{
+    display: flex;
+    flex-direction: row;
+  }
+
+
+  &_inner {
+    display: flex;
+    flex-direction: row;
+    margin: 0 20px;
+  }
+
+
+
+  .brand {
+    color: $background-color;
+  }
+
+  a {
+    display: block;
+    padding-inline: 12px;
+    color: #000000;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #bbbbbb;
+    background-color: #000000;
+  }
+
+}
+

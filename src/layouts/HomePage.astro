@@ -1,8 +1,9 @@
 ---
 import Base from "./Base.astro";
 import {getCollection} from "astro:content";
-import FormattedDate from "../components/FormattedDate.astro";
-import Tags from "../components/Tags.astro";
+import FormattedDate from "../partials/FormattedDate.astro";
+import Tags from "../partials/Tags.astro";
+import PageHeader from "../components/PageHeader/PageHeader.astro";
 
 const { frontmatter  } = Astro.props;
 
@@ -12,11 +13,11 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <Base title={frontmatter.title} description={frontmatter.description}>
-    <div class="page-header">
-        <h1>{frontmatter.title}</h1>
-    </div>
-    <div class="row-fluid">
-        <div class="span9 bs-docs-sidebar">
+    <PageHeader>
+        {frontmatter.title}
+    </PageHeader>
+    <div class="page-layout">
+        <div class="">
             <p class="lead">{frontmatter.description}</p>
             <slot/>
             <hr class="soften">
@@ -32,7 +33,7 @@ const posts = (await getCollection('blog')).sort(
             </ul>
         </div>
 
-        <div class="span3 bs-docs-sidebar">
+        <div class="page-layout__sidebar">
             <h1>Categories</h1>
             <ul class="nav nav-list bs-docs-sidenav">
 

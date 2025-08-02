@@ -2,6 +2,7 @@
 
 import Base from "./Base.astro";
 import type {CollectionEntry} from "astro:content";
+import PageHeader from "../components/PageHeader/PageHeader.astro";
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -10,9 +11,9 @@ const post = Astro.props;
 
 <Base {...post}>
     <div class="row-fluid navmargin">
-        <div class="page-header">
+        <PageHeader>
             <h1>{post.title} - { post.pubDate.toISOString() }</h1>
-        </div>
+        </PageHeader>
         <p class="lead">{post.description}</p>
         <slot/>
         <h4><a href="/">Back to home</a></h4>

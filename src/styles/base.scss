@@ -1,0 +1,133 @@
+@use "./typography";
+@use "./mixins";
+
+
+body {
+  margin: 0;
+  font-family: DOS, Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 18px;
+  line-height: 20px;
+  color: #bbbbbb;
+  background-color: #000084;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #fefe54;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: #fefe54;
+    background: #aa5500;
+    text-decoration: none;
+  }
+}
+
+nav {
+  li > a {
+    display: block;
+  }
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .content {
+    width: 70vw;
+
+    @include mixins.media-breakpoint-down(xl) {
+      width: 80vw;
+    }
+
+    @include mixins.media-breakpoint-down(md) {
+      width: 90vw;
+    }
+  }
+}
+
+.page-layout {
+  display: grid;
+  grid-template-columns: 4fr 1.5fr;
+  grid-template-areas: "content sidebar";
+
+  @include mixins.media-breakpoint-down(md) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "content" "sidebar";
+  }
+
+  &__sidebar {
+    grid-area: sidebar;
+    padding: 20px 0 20px 20px;
+    background-color: #000084;
+
+    @include mixins.media-breakpoint-down(md) {
+      padding: 20px 0 20px 0;
+    }
+  }
+}
+
+.nav-list {
+  display: block;
+  padding: 10px 15px;
+  margin: 10px 5px;
+  margin-right: 14px;
+  border: 2px solid #000000;
+  box-shadow: 0 0 0 5px, 11px 13px 0 4px black;
+
+  a {
+    color: #000000;
+  }
+
+}
+
+.nav {
+  margin-bottom: 20px;
+  list-style: none;
+  background: #bbbbbb;
+}
+
+
+
+svg text {
+  font-family: DOS, Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 18px;
+  fill: #000000;
+}
+
+
+
+#wrap386 {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 9999999;
+  width: 100%;
+  height: 100%;
+  background: #000084;
+}
+
+#bar386 {
+  float: right;
+  width: 100%;
+  height: 20px;
+  margin-top: -20px;
+  font-weight: bold;
+  color: #ffffff;
+  background: #000084;
+}
+
+#cursor386 {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 9999999;
+  font-weight: bold;
+  color: #ffffff;
+}

@@ -1,10 +1,12 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import Head from '../components/Head.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
+import Head from '../partials/Head.astro';
+import Footer from '../partials/Footer.astro';
+import FormattedDate from '../partials/FormattedDate.astro';
+import Header from '../partials/Header.astro';
+
+import '../styles/base.scss';
 
 type Props = {
     title: string;
@@ -19,15 +21,19 @@ const { title, description } = Astro.props;
 <Head title={title} description={description} />
 <body>
 <Header />
-<div id="content" class="container navmargin">
-    <slot/>
+<div class="container navmargin">
+    <div class="content">
+        <slot/>
+    </div>
 </div>
 <Footer />
 </body>
 
+<!--
 <link rel="stylesheet" href="/css/bootstrap.css">
 <link rel="stylesheet" href="/css/bootstrap-responsive.css" >
-<link rel="stylesheet" href="/css/style.css">
+-->
+<link rel="stylesheet" href="/css/docs.css">
 <script is:inline src="/js/jquery.js" />
 <script is:inline src="/js/bootstrap-386.js" />
 <script is:inline src="/js/bootstrap-transition.js" />
@@ -46,14 +52,9 @@ const { title, description } = Astro.props;
 
 <script is:inline>
     _386 = {
-        fastLoad: false ,
-        onePass: false ,
+        fastLoad: false,
+        onePass: true,
         speedFactor: 1
-    };
-
-
-    function ThisYear() {
-        document.getElementById('thisyear').innerHTML = new Date().getFullYear();
     };
 </script>
 

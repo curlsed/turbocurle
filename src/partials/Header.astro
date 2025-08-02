@@ -1,0 +1,22 @@
+---
+import {SiteConfig} from '../consts';
+import Navbar from "../components/Navbar/Navbar.astro";
+
+import style from '../components/Navbar/Navbar.module.scss';
+import NavbarLink from "../components/Navbar/NavbarLink.astro";
+
+const links = SiteConfig.topLinks;
+
+---
+<!-- Navbar
+================================================== -->
+
+<Navbar>
+	<a class={style.brand} href="/">{SiteConfig.title}</a>
+	<div class={`${style.navbar_collapse} collapse`}>
+		{links.map((link) => (
+			<NavbarLink name={link.Name} href={link.URL}/>
+		))}
+	</div>
+</Navbar>
+

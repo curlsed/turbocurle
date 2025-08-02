@@ -1,9 +1,8 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
 
 type Props = {
-	href: string;
-	name: string;
+    href: string;
+    name: string;
 };
 
 const { href, name } = Astro.props;
@@ -13,8 +12,6 @@ const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 ---
 
-<li>
-	<a href={href}>
-		<span>{name}</span>
-	</a>
-</li>
+<a href={href}>
+    <span>{name}</span>
+</a>

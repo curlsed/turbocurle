@@ -1,0 +1,9 @@
+---
+import styles from "./Navbar.module.scss";
+---
+
+<nav class={`${styles.navbar}`} role="navigation">
+    <div class={`${styles.navbar_inner}`}>
+        <slot/>
+    </div>
+</nav>
