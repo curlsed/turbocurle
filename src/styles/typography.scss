@@ -8,7 +8,7 @@
   url('/css/fonts/Fixedsys500c.svg') format('svg');
 }
 
-@mixin set-fonts($font-family, $font-weight: normal, $font-style: normal) {
+@mixin set-fonts($font-weight: normal, $font-style: normal) {
   font-family: DOS, Monaco, Menlo, Consolas, "Courier New", monospace;
   font-weight: $font-weight;
   font-style: $font-style;

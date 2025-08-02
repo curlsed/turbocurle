@@ -1,5 +1,5 @@
 @use "../../styles/colors" as *;
-
+@use "../../styles";
 
 .navbar {
   margin-bottom: 20px;
@@ -21,15 +21,45 @@
     top: 0;
   }
 
-  &_collapse{
+  &-collapse{
     display: flex;
     flex-direction: row;
+
+    @include styles.media-breakpoint-down(sm) {
+      display: none;
+      flex-direction: column;
+      grid-column-start: menu-start;
+
+      margin-inline: -2px;
+
+      z-index: 10;
+
+      background-color: styles.$shadow-color;
+      border: 2px solid #000000;
+      box-shadow: 0 0 0 5px, 11px 13px 0 4px black;
+    }
   }
 
+  &-menu {
+    @include styles.set-fonts(normal, normal);
+
+    & + label {
+      color: black;
+      padding-inline: 12px;
+
+      @include styles.media-breakpoint-up(sm){
+        display: none;
+      }
+    }
+  }
+
+  &-menu:checked ~ &-collapse {
+    display: flex;
+  }
 
   &_inner {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: fit-content(200px) [menu-start] 1fr;
     margin: 0 20px;
   }
 
@@ -37,6 +67,10 @@
 
   .brand {
     color: $background-color;
+  }
+
+  *:first-letter {
+    color: red;
   }
 
   a {

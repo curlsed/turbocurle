@@ -13,7 +13,17 @@ const links = SiteConfig.topLinks;
 
 <Navbar>
 	<a class={style.brand} href="/">{SiteConfig.title}</a>
-	<div class={`${style.navbar_collapse} collapse`}>
+
+	<input
+		type='checkbox'
+		class={style['navbar-menu']}
+		style='display: none'
+		id=cb
+		aria-controls="navbar_collapse"
+	/>
+	<label for=cb>Click Here</label>
+
+	<div class={style['navbar-collapse']} id="navbar_collapse">
 		{links.map((link) => (
 			<NavbarLink name={link.Name} href={link.URL}/>
 		))}

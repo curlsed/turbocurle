@@ -2,6 +2,10 @@
 @use "./mixins";
 
 
+@forward "./mixins";
+@forward "./typography";
+@forward "colors";
+
 body {
   margin: 0;
   font-family: DOS, Monaco, Menlo, Consolas, "Courier New", monospace;
