@@ -1,5 +1,4 @@
-import type {Code, Nodes, Root} from "mdast";
-import type {Plugin} from "unified";
+import type {Code, Root} from "mdast";
 
 import {visit} from 'unist-util-visit'
 
@@ -8,7 +7,7 @@ import { text } from "node:stream/consumers";
 
 async function ConvertGoatToSVG(code: string): Promise<string> {
 
-    const task = spawn("/home/dpeter99/go/bin/goat");
+    const task = spawn("./vendor/goat/bin/goat");
     task.stdin?.write(code, 'utf-8');
 
     task.stdin?.end(); // Close the stdin stream to indicate end of input
@@ -52,8 +51,8 @@ export default function goatDiagrams () {
             // console.log(svgString);
 
             // Extract width and height from the SVG string
-            const width = svgString.match(/width='(?<width>\d+)'/)?.groups.width;
-            const height = svgString.match(/height='(?<height>\d+)'/)?.groups.height;
+            const width = svgString.match(/width='(?<width>\d+)'/)?.groups?.width;
+            const height = svgString.match(/height='(?<height>\d+)'/)?.groups?.height;
 
             // Add viewBox attribute if not present and remove width and height attributes
             if (!svgString.includes('viewBox=')) {
