@@ -371,7 +371,7 @@ Actually performing the intersection calculations is done later, but the general
   |                                                                                 |                                                               |
   |                                                                                 v                                                               |
   |                                           data                  .---------------------------------.            control flow                     |
-  '----------------------------------------------------------------+  Save to colliding entities list  +--------------------------------------------+
+  '----------------------------------------------------------------+  Save to colliding entities list  +--------------------------------------------'
                                                                     '---------------------------------'
 ```
 
