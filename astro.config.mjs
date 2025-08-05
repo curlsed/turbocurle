@@ -7,7 +7,8 @@ import goatDiagrams from "./src/remarkPlugins/goat_diagram.js";
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://curlsed.github.io/turbocurle/',
+	site: 'https://curlsed.github.io',
+	base: `/turbocurle`,
 	server:{
 		allowedHosts: ['localhost'],
 	},
