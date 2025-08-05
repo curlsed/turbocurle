@@ -4,6 +4,7 @@ import {getCollection} from "astro:content";
 import FormattedDate from "../partials/FormattedDate.astro";
 import Tags from "../partials/Tags.astro";
 import PageHeader from "../components/PageHeader/PageHeader.astro";
+import {base} from "astro:config/server";
 
 const { frontmatter  } = Astro.props;
 
@@ -26,7 +27,7 @@ const posts = (await getCollection('blog')).sort(
                 {
                     posts.map((post) => (
                         <li>
-                            <a href={`/blog/${post.id}/`}><FormattedDate date={post.data.pubDate} /> | {post.data.title}</a>
+                            <a href={`${base}/blog/${post.id}/`}><FormattedDate date={post.data.pubDate} /> | {post.data.title}</a>
                         </li>
                     ))
                 }

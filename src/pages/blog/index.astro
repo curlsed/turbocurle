@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../../partials/FormattedDate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 import Base from "../../layouts/Base.astro";
+import {base} from "astro:config/server";
 
 const posts = (await getCollection('blog')).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -20,7 +21,7 @@ const posts = (await getCollection('blog')).sort(
         {
             posts.map((post) => (
                     <li>
-                        <a href={`/blog/${post.id}/`}><FormattedDate date={post.data.pubDate} /> | {post.data.title}</a>
+                        <a href={`${base}/blog/${post.id}/`}><FormattedDate date={post.data.pubDate} /> | {post.data.title}</a>
                     </li>
             ))
         }

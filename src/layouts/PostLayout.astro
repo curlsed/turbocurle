@@ -3,6 +3,7 @@
 import Base from "./Base.astro";
 import type {CollectionEntry} from "astro:content";
 import PageHeader from "../components/PageHeader/PageHeader.astro";
+import {base} from "astro:config/server";
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -16,6 +17,6 @@ const post = Astro.props;
         </PageHeader>
         <p class="lead">{post.description}</p>
         <slot/>
-        <h4><a href="/">Back to home</a></h4>
+        <h4><a href={base}>Back to home</a></h4>
     </div>
 </Base>
